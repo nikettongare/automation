@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "210291858388",
+    "firebase_url": "https://automation-d8b25-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "automation-d8b25",
+    "storage_bucket": "automation-d8b25.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210291858388:android:0e70f0f05dcacb46029441",
+        "android_client_info": {
+          "package_name": "com.example.automation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "210291858388-dl8e4nji2602shucpr7eggfkfrlff9ms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfSQYe1kvylFo7ctIakyt8b9lUGwuRWW4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "210291858388-dl8e4nji2602shucpr7eggfkfrlff9ms.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
