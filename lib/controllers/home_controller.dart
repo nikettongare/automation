@@ -1,49 +1,62 @@
+import 'dart:async';
+
 import 'package:automation/views/widgets/snackbar.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  final database = FirebaseDatabase.instance.reference();
-  var data;
-  late bool fan, bulb, tubeLight, input;
-  late Color bulbColor, fanColor, tubeLightColor, inputColor;
+  int fanStatus = 0, bulbStatus = 0, lightStatus = 0, chargerStatus = 0;
+  Color bulbColor = Colors.green,
+      fanColor = Colors.green,
+      lightColor = Colors.green,
+      chargerColor = Colors.green;
   var databaseReference;
 
   @override
   void onInit() {
-    databaseReference = database.child("/automation");
+    databaseReference = FirebaseDatabase.instance.reference();
     syncData();
     super.onInit();
   }
 
+  // void timerLoopFetch() async {
+  //   Timer(const Duration(seconds: 60), () {
+  //     syncData();
+  //   });
+  // }
+
   Future<void> syncData() async {
+    var data;
     await databaseReference.once().then((DataSnapshot snapshot) {
       data = snapshot.value;
     });
 
-    bulb = data["Bulb"];
-    fan = data["Fan"];
-    tubeLight = data["TubeLight"];
-    input = data["Input"];
+    CustomSnackBar.show("success", data.toString());
 
-    bulbColor = (bulb) ? Colors.red : Colors.green;
-    fanColor = (fan) ? Colors.red : Colors.green;
-    tubeLightColor = (tubeLight) ? Colors.red : Colors.green;
-    inputColor = (input) ? Colors.red : Colors.green;
+    bulbStatus = data["BULB_STATUS"];
+    fanStatus = data["FAN_STATUS"];
+    lightStatus = data["LIGHT_STATUS"];
+    chargerStatus = data["CHARGER_STATUS"];
+
+    bulbColor = (bulbStatus == 1) ? Colors.red : Colors.green;
+    fanColor = (fanStatus == 1) ? Colors.red : Colors.green;
+    lightColor = (lightStatus == 1) ? Colors.red : Colors.green;
+    chargerColor = (chargerStatus == 1) ? Colors.red : Colors.green;
+
     update();
   }
 
   Future<void> updateData({required String fieldName}) async {
-    bool value = false;
-    if (fieldName == "Bulb") {
-      value = !bulb;
-    } else if (fieldName == "Input") {
-      value = !input;
-    } else if (fieldName == "TubeLight") {
-      value = !tubeLight;
-    } else if (fieldName == "Fan") {
-      value = !fan;
+    int value = 0;
+    if (fieldName == "BULB_STATUS") {
+      value = (bulbStatus == 0) ? 1 : 0;
+    } else if (fieldName == "CHARGER_STATUS") {
+      value = (chargerStatus == 0) ? 1 : 0;
+    } else if (fieldName == "LIGHT_STATUS") {
+      value = (lightStatus == 0) ? 1 : 0;
+    } else if (fieldName == "FAN_STATUS") {
+      value = (fanStatus == 0) ? 1 : 0;
     }
     await databaseReference.update({fieldName: value}).catchError(
         (error) => CustomSnackBar.show("Error", error.toString()));
