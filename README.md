@@ -1,4 +1,4 @@
-# App Which changes values in firebsae realtime database For Home Automation Project
+# App Which changes values in firebase realtime database For Home Automation Project
 
 ## Home Automation Project With NodeMCU : https://github.com/nikettongare/NodeMCU
 
