@@ -1,6 +1,7 @@
 import 'package:automation/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:automation/config/config.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class HomePage extends StatelessWidget {
             backgroundColor: Colors.lightBlueAccent,
             centerTitle: true,
             title: const Text(
-              "Automation",
+              Config.appName,
               style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w600,
@@ -35,17 +36,17 @@ class HomePage extends StatelessWidget {
                           MaterialButton(
                             onPressed: () async {
                               await homeController.updateData(
-                                  fieldName: "BULB_STATUS");
+                                  fieldName: Config.button1FirebaseFieldName);
                             },
                             elevation: 5,
                             shape: RoundedRectangleBorder(
                                 borderRadius:
                                     BorderRadius.circular(_width * 0.2)),
-                            color: homeController.bulbColor,
+                            color: homeController.button1Color,
                             height: _width * 0.3,
                             minWidth: _width * 0.3,
                             child: const Text(
-                              "BULB",
+                              Config.button1Name,
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,
@@ -55,17 +56,17 @@ class HomePage extends StatelessWidget {
                           MaterialButton(
                             onPressed: () async {
                               await homeController.updateData(
-                                  fieldName: "LIGHT_STATUS");
+                                  fieldName: Config.button2FirebaseFieldName);
                             },
                             elevation: 5,
                             shape: RoundedRectangleBorder(
                                 borderRadius:
                                     BorderRadius.circular(_width * 0.2)),
-                            color: homeController.lightColor,
+                            color: homeController.button2Color,
                             height: _width * 0.3,
                             minWidth: _width * 0.3,
                             child: const Text(
-                              "LIGHT",
+                              Config.button2Name,
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,
@@ -83,17 +84,17 @@ class HomePage extends StatelessWidget {
                           MaterialButton(
                             onPressed: () async {
                               await homeController.updateData(
-                                  fieldName: "FAN_STATUS");
+                                  fieldName: Config.button3FirebaseFieldName);
                             },
                             shape: RoundedRectangleBorder(
                                 borderRadius:
                                     BorderRadius.circular(_width * 0.2)),
-                            color: homeController.fanColor,
+                            color: homeController.button3Color,
                             height: _width * 0.3,
                             elevation: 5,
                             minWidth: _width * 0.3,
                             child: const Text(
-                              "Fan",
+                              Config.button3Name,
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,
@@ -103,17 +104,17 @@ class HomePage extends StatelessWidget {
                           MaterialButton(
                             onPressed: () async {
                               await homeController.updateData(
-                                  fieldName: "CHARGER_STATUS");
+                                  fieldName: Config.button4FirebaseFieldName);
                             },
                             elevation: 5,
                             shape: RoundedRectangleBorder(
                                 borderRadius:
                                     BorderRadius.circular(_width * 0.2)),
-                            color: homeController.chargerColor,
+                            color: homeController.button4Color,
                             height: _width * 0.3,
                             minWidth: _width * 0.3,
                             child: const Text(
-                              "Charger",
+                              Config.button4Name,
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,
